@@ -8,7 +8,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="bg-black text-white flex justify-between items-center w-full p-3 shadow-lg flex-wrap">
+    <div className="bg-gray-950 text-white flex justify-between items-center w-full p-3 shadow-lg flex-wrap">
       <h1 className="text-xl font-bold">DHARAMTALLA.COM</h1>
       <ul className="flex items-center gap-5 text-lg sm:text-sm">
         <li className="cursor-pointer hover:text-gray-300 ">
