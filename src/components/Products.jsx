@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ProductCard } from "./ProductCard";
 import Skeleton from "./Skeleton";
+import { Link } from "react-router-dom";
 
 export const Products = () => {
   const [newItems, setNewItems] = useState([]);
@@ -8,32 +9,35 @@ export const Products = () => {
   const [top, setTop] = useState(false);
   const [search, setSearch] = useState("");
 
-  const fetchData = async () => {
-    const data = await fetch("https://fakestoreapi.com/products");
-    const resData = await data.json();
-    setNewItems(resData); //changes
-    setOriginalItems(resData); //always constant
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        const resData = await response.json();
+        setNewItems(resData);
+        setOriginalItems(resData);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
     fetchData();
   }, []);
 
-  //top rated and show all function
+  // Toggle between top-rated and all products
   const setItem = () => {
     if (top) {
       setNewItems(originalItems);
-      setTop(false);
     } else {
       const filterProduct = originalItems.filter(
-        (product) => product.rating.rate >= 4
+        (product) => product.rating?.rate >= 4
       );
       setNewItems(filterProduct);
-      setTop(true);
     }
+    setTop(!top);
   };
 
-  //search item function
+  // Search function
   const searchItem = () => {
     const filteredProducts = originalItems.filter((product) =>
       product.title.toLowerCase().includes(search.toLowerCase())
@@ -44,13 +48,13 @@ export const Products = () => {
   return newItems.length === 0 ? (
     <Skeleton />
   ) : (
-    <div className="bg-gray-100 min-h-screen p-6 ">
+    <div className="bg-gray-100 min-h-screen p-6">
       <div className="flex justify-between items-center gap-4 mb-6 flex-wrap">
         <button
           className="bg-black text-white px-5 py-2 rounded-lg font-semibold transition duration-300 hover:bg-gray-800"
           onClick={setItem}
         >
-          {top ? "Show All" : "Top"}
+          {top ? "Show All" : "Top Rated"}
         </button>
 
         <div className="flex gap-2">
@@ -62,7 +66,7 @@ export const Products = () => {
             onChange={(e) => setSearch(e.target.value)}
           />
           <button
-            className="bg-blue-600 text-white p-1 rounded-lg font-semibold transition duration-300 hover:bg-blue-700"
+            className="bg-blue-600 text-white px-3 py-2 rounded-lg font-semibold transition duration-300 hover:bg-blue-700"
             onClick={searchItem}
           >
             Search
@@ -70,9 +74,11 @@ export const Products = () => {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {newItems.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <Link key={product.id} to={`/product/${product.id}`}>
+            <ProductCard product={product} />
+          </Link>
         ))}
       </div>
     </div>

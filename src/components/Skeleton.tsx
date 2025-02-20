@@ -6,7 +6,7 @@ const Skeleton = () => {
       {[...Array(10)].map((_, index) => (
         <div
           key={index}
-          className="w-80 flex flex-col items-center justify-center border p-5 bg-gray-300 animate-pulse rounded-lg shadow-md m-5"
+          className="w-60 flex flex-col items-center justify-center border p-5 bg-gray-300 animate-pulse rounded-lg shadow-md m-5"
         >
           <div className="w-40 h-40 bg-gray-400 rounded-lg mb-4"></div>
           <div className="w-3/4 h-6 bg-gray-400 rounded-md mb-2"></div>
