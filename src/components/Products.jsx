@@ -66,7 +66,7 @@ export const Products = () => {
           </button>
         </div>
         <img
-          src="https://indian-retailer.s3.ap-south-1.amazonaws.com/s3fs-public/2021-10/beautiful-asian-woman-carrying-colorful-bags-shopping-online-with-mobile-phone.jpg"
+          src="https://cdn.shopify.com/s/files/1/0817/7988/4088/articles/fashion-ecommerce.jpg?v=1738095976"
           alt=""
           className="w-screen"
         />
