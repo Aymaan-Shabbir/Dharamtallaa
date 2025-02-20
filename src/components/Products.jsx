@@ -48,16 +48,9 @@ export const Products = () => {
   return newItems.length === 0 ? (
     <Skeleton />
   ) : (
-    <div className="bg-gray-100 min-h-screen p-6">
-      <div className="flex justify-between items-center gap-4 mb-6 flex-wrap">
-        <button
-          className="bg-black text-white px-5 py-2 rounded-lg font-semibold transition duration-300 hover:bg-gray-800"
-          onClick={setItem}
-        >
-          {top ? "Show All" : "Top Rated"}
-        </button>
-
-        <div className="flex gap-2">
+    <div>
+      <div className="flex justify-around m-2 items-center gap-4 mb-2 flex-wrap">
+        <div className="flex justify-around items-center gap-4 mb-2 flex-wrap">
           <input
             type="text"
             placeholder="Search Products..."
@@ -72,14 +65,26 @@ export const Products = () => {
             Search
           </button>
         </div>
+        <img
+          src="https://indian-retailer.s3.ap-south-1.amazonaws.com/s3fs-public/2021-10/beautiful-asian-woman-carrying-colorful-bags-shopping-online-with-mobile-phone.jpg"
+          alt=""
+          className="w-screen"
+        />
       </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {newItems.map((product) => (
-          <Link key={product.id} to={`/product/${product.id}`}>
-            <ProductCard product={product} />
-          </Link>
-        ))}
+      <div className="bg-gray-100 min-h-screen p-6 mt-1">
+        <button
+          className="bg-black text-white px-5 py-2 rounded-lg font-semibold transition duration-300 hover:bg-gray-800"
+          onClick={setItem}
+        >
+          {top ? "Show All" : "Top Rated"}
+        </button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {newItems.map((product) => (
+            <Link key={product.id} to={`/product/${product.id}`}>
+              <ProductCard product={product} />
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

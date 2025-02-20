@@ -15,7 +15,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-950 text-white flex justify-between items-center w-full p-3 shadow-lg flex-wrap">
+    <nav className="bg-gray-950 text-white flex justify-between items-center w-full p-3 shadow-lg flex-wrap z-10">
       <h1 className="text-lg font-bold">DHARAMTALLA.COM</h1>
 
       {/* Hamburger Menu Button */}
