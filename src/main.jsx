@@ -8,6 +8,7 @@ import Kids from "./components/Kids";
 import Error from "./components/Error";
 import Men from "./components/Men";
 import Women from "./components/Women";
+import About from "./components/About";
 import ProductDetails from "./components/ProductDetails";
 
 const appRouter = createBrowserRouter([
@@ -20,6 +21,7 @@ const appRouter = createBrowserRouter([
       { path: "/kids", element: <Kids /> },
       { path: "/men", element: <Men /> },
       { path: "/women", element: <Women /> },
+      { path: "/about", element: <About /> },
       { path: "/product/:productId", element: <ProductDetails /> },
     ],
   },

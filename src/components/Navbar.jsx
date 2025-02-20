@@ -9,7 +9,7 @@ export const Navbar = () => {
 
   return (
     <div className="bg-gray-950 text-white flex justify-evenly items-center w-full p-1 py-3 shadow-lg flex-wrap ">
-      <h1 className="text-lg font-bold">DHARAMTALLA.COM</h1>
+      <h1 className="text-lg font-bold ">DHARAMTALLA.COM</h1>
       <ul className="flex items-center gap-3 text-m sm:text-sm">
         <li className="cursor-pointer hover:text-gray-300 ">
           <Link to="/">HOME.</Link>
@@ -22,6 +22,9 @@ export const Navbar = () => {
         </li>
         <li className="cursor-pointer hover:text-gray-300">
           <Link to="/women">woMEN.</Link>
+        </li>
+        <li className="cursor-pointer hover:text-gray-300">
+          <Link to="/about">ABOUT.</Link>
         </li>
         <li>
           <button
