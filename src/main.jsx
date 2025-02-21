@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./index.css";
 import Layout from "./Layout";
 import App from "./App";
-import Kids from "./components/Kids";
+
 import Error from "./components/Error";
 import Men from "./components/Men";
 import Women from "./components/Women";
@@ -13,6 +13,7 @@ import ProductDetails from "./components/ProductDetails";
 import Skeleton from "./components/Skeleton";
 
 const Grocery = lazy(() => import("./components/Grocery"));
+const Kids = lazy(() => import("./components/Kids"));
 
 const appRouter = createBrowserRouter([
   {
@@ -21,7 +22,14 @@ const appRouter = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "/", element: <App /> },
-      { path: "/kids", element: <Kids /> },
+      {
+        path: "/kids",
+        element: (
+          <Suspense fallback={<Skeleton />}>
+            <Kids />
+          </Suspense>
+        ),
+      },
       { path: "/men", element: <Men /> },
       { path: "/women", element: <Women /> },
       { path: "/about", element: <About /> },

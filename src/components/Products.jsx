@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ProductCard } from "./ProductCard";
+import { HOF, ProductCard } from "./ProductCard";
 import Skeleton from "./Skeleton";
 import { Link } from "react-router-dom";
 
@@ -23,6 +23,9 @@ export const Products = () => {
 
     fetchData();
   }, []);
+
+  const HOFComponent = HOF(ProductCard);
+  //wrapping HOF
 
   // Toggle between top-rated and all products
   const setItem = () => {
@@ -81,7 +84,11 @@ export const Products = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {newItems.map((product) => (
             <Link key={product.id} to={`/product/${product.id}`}>
-              <ProductCard product={product} />
+              {product.rating.rate >= 4 ? (
+                <HOFComponent product={product} />
+              ) : (
+                <ProductCard product={product} />
+              )}
             </Link>
           ))}
         </div>
