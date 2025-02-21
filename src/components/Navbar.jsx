@@ -59,6 +59,12 @@ export const Navbar = () => {
         >
           <Link to="/about">ABOUT.</Link>
         </li>
+        <li
+          className="cursor-pointer hover:text-gray-300 p-2"
+          onClick={closeMenu}
+        >
+          <Link to="/grocery">GROCERY.</Link>
+        </li>
         <li className="p-2">
           <button
             onClick={btnToggle}

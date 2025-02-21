@@ -1,26 +1,11 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PostDetailSkeleton from "./PostDetailSkeleton";
+import useGetSingleProduct from "../hooks/useSingleProduct";
 
 const ProductDetails = () => {
-  const [singleProduct, setSingleProduct] = useState(null);
   const { productId } = useParams();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://fakestoreapi.com/products/${productId}`
-        );
-        const resData = await response.json();
-        setSingleProduct(resData);
-      } catch (error) {
-        console.error("Error fetching product details:", error);
-      }
-    };
-
-    fetchData();
-  }, [productId]); // Added dependency
+  const singleProduct = useGetSingleProduct(productId);
+  //usegetSingleProduct is custom hook for getting data for a single product
 
   return singleProduct === null ? (
     <PostDetailSkeleton />

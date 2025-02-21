@@ -54,7 +54,7 @@ export const Products = () => {
           <input
             type="text"
             placeholder="Search Products..."
-            className="p-3 border rounded-lg w-40 focus:outline-none"
+            className="p-2 border rounded-lg w-full focus:outline-none"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
