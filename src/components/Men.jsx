@@ -1,5 +1,5 @@
 import { UserContext } from "../utils/UserContext";
-import { Accordian } from "./accordian";
+import { Accordian } from "./Accordian";
 import { useState, useContext } from "react";
 
 const Men = () => {
