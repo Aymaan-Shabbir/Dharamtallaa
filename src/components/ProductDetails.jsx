@@ -1,11 +1,17 @@
 import { useParams } from "react-router-dom";
 import PostDetailSkeleton from "./PostDetailSkeleton";
 import useGetSingleProduct from "../hooks/useSingleProduct";
+import { addItems } from "../store/cartSlice";
+import { useDispatch } from "react-redux";
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const singleProduct = useGetSingleProduct(productId);
+  const dispatch = useDispatch();
   //usegetSingleProduct is custom hook for getting data for a single product
+  const addCartItem = () => {
+    dispatch(addItems(singleProduct));
+  };
 
   return singleProduct === null ? (
     <PostDetailSkeleton />
@@ -26,6 +32,12 @@ const ProductDetails = () => {
         <p className="text-lg font-bold text-blue-700 mt-1">
           ₹{singleProduct.price}
         </p>
+        <button
+          onClick={addCartItem}
+          className="bg-black border border-gray-500  text-white m-1 rounded-lg p-1 cursor-pointer hover:bg-gray-500 hover:text-white"
+        >
+          ADD +
+        </button>
         <p className="text-lg font-bold text-black mt-1">
           {singleProduct.category}
         </p>

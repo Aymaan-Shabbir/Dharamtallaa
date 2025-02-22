@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // Icons for menu toggle
+import { useSelector } from "react-redux";
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [btn, setBtn] = useState("Light");
+  const cartItems = useSelector((store) => store.cart.cartItems);
 
   const btnToggle = () => {
     setBtn(btn === "Light" ? "Dark" : "Light");
@@ -17,8 +19,12 @@ export const Navbar = () => {
   return (
     <nav className="bg-gray-950 text-white flex justify-between items-center w-full p-3 shadow-lg flex-wrap z-10">
       <h1 className="text-lg font-bold">DHARAMTALLA.COM</h1>
+      <Link to="/cart">
+        <h1>CART : {cartItems.length}</h1>
+      </Link>
 
       {/* Hamburger Menu Button */}
+
       <button className="sm:hidden p-2" onClick={() => setMenuOpen(!menuOpen)}>
         {menuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>

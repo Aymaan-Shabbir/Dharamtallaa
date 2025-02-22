@@ -1,12 +1,15 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-
+import { Provider } from "react-redux";
+import appStore from "./store/store";
 const Layout = () => {
   return (
-    <div>
-      <Navbar />
-      <Outlet />
-    </div>
+    <Provider store={appStore}>
+      <div>
+        <Navbar />
+        <Outlet />
+      </div>
+    </Provider>
   );
 };
 

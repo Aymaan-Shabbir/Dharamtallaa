@@ -11,6 +11,7 @@ import Women from "./components/Women";
 import About from "./components/About";
 import ProductDetails from "./components/ProductDetails";
 import Skeleton from "./components/Skeleton";
+import Cart from "./components/Cart";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 const Kids = lazy(() => import("./components/Kids"));
@@ -33,6 +34,7 @@ const appRouter = createBrowserRouter([
       { path: "/men", element: <Men /> },
       { path: "/women", element: <Women /> },
       { path: "/about", element: <About /> },
+      { path: "/cart", element: <Cart /> },
       {
         path: "/grocery",
         element: (
