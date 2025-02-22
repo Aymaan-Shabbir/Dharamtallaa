@@ -1,8 +1,11 @@
+import { UserContext } from "../utils/UserContext";
 import { Accordian } from "./accordian";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 const Men = () => {
   const [showList, setShowList] = useState("");
+  const user = useContext(UserContext);
+  console.log(user);
   return (
     <div className="h-full w-screen flex items-start justify-start">
       <div className="h-full max-w-5xl flex items-start justify-between flex-col mt-5">
@@ -18,7 +21,10 @@ const Men = () => {
           )
         )}
       </div>
-      <div>hellllo</div>
+      <div>
+        <h1>{user.name}</h1>
+        <h1>{user.email}</h1>
+      </div>
     </div>
   );
 };
