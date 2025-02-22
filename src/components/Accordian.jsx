@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import { useState } from "react";
+
 import ListItems from "./ListItems";
 
 export const Accordian = ({ title, open, setOpen }) => {
