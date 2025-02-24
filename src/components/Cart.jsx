@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeItems, clearItems } from "../store/cartSlice";
+// import { useRef } from "react";
 
 function Cart() {
   const cartItems = useSelector((store) => store.cart.cartItems);
@@ -14,16 +15,29 @@ function Cart() {
     dispatch(clearItems());
   };
 
+  // const input = useRef(null);
+  // const focusRef = () => {
+  //   input.current.focus();
+  // };
+
   return (
     <div className="flex items-center justify-between flex-col m-5">
       <div className="flex m-3">
         <h1 className="font-bold m-2 text-2xl">CART - {cartItems.length}</h1>
-        <button
-          onClick={clearCart}
-          className="bg-black border border-gray-500 text-white m-1 rounded-lg p-1 text-sm cursor-pointer hover:bg-gray-500 hover:text-white"
-        >
-          CLEAR CART
-        </button>
+        {/* <input ref={input} type="text" placeholder="enter text" />
+        <button onClick={focusRef}>click</button> */}
+        <h1 className="font-bold m-2 text-2xl">
+          {cartItems.length === 0 ? (
+            "Your cart is empty , add items"
+          ) : (
+            <button
+              onClick={clearCart}
+              className="bg-black border border-gray-500 text-white m-1 rounded-lg p-1 text-sm cursor-pointer hover:bg-gray-500 hover:text-white"
+            >
+              CLEAR CART
+            </button>
+          )}
+        </h1>
       </div>
       <div className="flex justify-evenly items-start gap-2 flex-wrap">
         {cartItems.map((item) => (

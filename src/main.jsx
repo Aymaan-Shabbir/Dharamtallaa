@@ -12,6 +12,7 @@ import About from "./components/About";
 import ProductDetails from "./components/ProductDetails";
 import Skeleton from "./components/Skeleton";
 import Cart from "./components/Cart";
+import Login from "./components/Login";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 const Kids = lazy(() => import("./components/Kids"));
@@ -44,6 +45,7 @@ const appRouter = createBrowserRouter([
         ),
       },
       { path: "/product/:productId", element: <ProductDetails /> },
+      { path: "/login", element: <Login /> },
     ],
   },
 ]);
